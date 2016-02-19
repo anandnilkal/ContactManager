@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 2.4)
+project(ContactManager)
+
+add_subdirectory("list")
+add_subdirectory("map")
+add_subdirectory("multimap")
+add_subdirectory("array")
+add_subdirectory("pmap")
+add_subdirectory("ptree")
+add_subdirectory("icl")
+add_subdirectory("Interface")
+add_executable(CManager CManagerMain.cpp)
