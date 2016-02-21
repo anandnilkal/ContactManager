@@ -2,9 +2,19 @@
 #define _INTERFACE_H
 
 #include <iostream>
+#include <stdio.h>
+#include <stdint.h>
 
 using namespace std;
 
+/**
+* contact class defines the basic data structure for storing contact information.
+*   current this data structure supports following 4 information storage.
+*	1.	name
+*	2.	email
+*	3.	home contact number
+*	4.	office contact number
+*/
 namespace ContactManager {
 	class contact {
 		public:
@@ -17,19 +27,19 @@ namespace ContactManager {
 		};
 
 			contact()
-			: _name(""), _email(""), _num_home(""), _num_office("") {
+			: _name(""), _email(""), _num_home(0), _num_office(0) {
 			}
-			contact(string name, string email, string num_home, string num_office)
+			contact(string name, string email, uint64_t num_home, uint64_t num_office)
 			: _name(name), _email(email), _num_home(num_home), _num_office(num_office){
 			}
 			~contact() {}
-			add(tags_t, string);
+			void contact_add(tags_t, void*);
+			void dump_contact_details();
 
-		private:
 			string _name;
 			string _email;
-			string _num_home;
-			string _num_office;	
+			uint64_t _num_home;
+			uint64_t _num_office;	
 	};
 }
 
