@@ -1,9 +1,6 @@
 cmake_minimum_required(VERSION 2.4)
 project(ContactManager)
 
-add_subdirectory("list")
-add_subdirectory("multimap")
-add_subdirectory("vector")
 add_subdirectory("Interface")
 link_directories("${PROJECT_SOURCE_DIR}/lib")
 include_directories("${PROJECT_SOURCE_DIR}/main/include")
