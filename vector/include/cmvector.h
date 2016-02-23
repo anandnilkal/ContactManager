@@ -53,7 +53,7 @@ class ContactVector {
 		}
 
 		void addContact(string name, string email, uint64_t home, uint64_t office) {
-			cpointer c = new contact();
+			cpointer c = new T();
 			/**
 			* overloaded constructor could be called.
 			*	used individual property update mechanism to show capability.
@@ -70,7 +70,7 @@ class ContactVector {
 			cname.assign(name);
 			cout << "Removing contact with name [" << name << "]" << endl;
 			_cvector.erase(std::remove_if(std::begin(_cvector), std::end(_cvector),
-				[&](cpointer c) { return (cname.compare(c->_name) == 0);}), 
+				[&](cpointer c) { return (cname.compare(c->getName()) == 0);}), 
 					std::end(_cvector));
 			Size = _cvector.size();
 		}
@@ -84,8 +84,8 @@ class ContactVector {
 			*	all occurances of the entries matching the unary predicate will be erased.
 			*/
 			_cvector.erase(std::remove_if(std::begin(_cvector), std::end(_cvector),
-				[&](cpointer c) { return ((cnum == (c->_num_home)) 
-					|| (cnum == (c->_num_office)));}), std::end(_cvector));
+				[&](cpointer c) { return ((cnum == (c->getHomeNum())) 
+					|| (cnum == (c->getOffNum())));}), std::end(_cvector));
 			Size = _cvector.size();
 		}
 
@@ -99,7 +99,7 @@ class ContactVector {
 			*/
 			while(cv_iter != std::end(_cvector)) {
 				cv_iter = std::find_if(cv_iter, std::end(_cvector),
-						[&](cpointer c) { return (cname.compare(c->_name) == 0);});
+						[&](cpointer c) { return (cname.compare(c->getName()) == 0);});
 				if(cv_iter != std::end(_cvector)) {
 					displayContact(*cv_iter);
 					cv_iter++;
@@ -113,8 +113,8 @@ class ContactVector {
 			cv_iter = std::begin(_cvector);
 			while(cv_iter != std::end(_cvector)) {
 				cv_iter = std::find_if(cv_iter, std::end(_cvector),
-					[&](cpointer c) { return ((cnum == (c->_num_home)) 
-						|| (cnum == (c->_num_office)));});
+					[&](cpointer c) { return ((cnum == (c->getHomeNum())) 
+						|| (cnum == (c->getOffNum())));});
 				if(cv_iter != std::end(_cvector)) {
 					displayContact(*cv_iter);
 					cv_iter++;

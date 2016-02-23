@@ -52,7 +52,7 @@ class ContactUMap {
 		}
 
 		void addContact(string name, string email, uint64_t home, uint64_t office) {
-			cpointer c = new contact();
+			cpointer c = new T();
 			c->contact_add(contact::NAME, &name);
 			c->contact_add(contact::EMAIL, &email);
 			c->contact_add(contact::H_NUM, &home);

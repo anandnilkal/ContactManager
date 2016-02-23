@@ -26,20 +26,12 @@ namespace ContactManager {
 			O_NUM = 3
 		};
 
-			contact()
-			: _name(""), _email(""), _num_home(0), _num_office(0) {
-			}
-			contact(string name, string email, uint64_t num_home, uint64_t num_office)
-			: _name(name), _email(email), _num_home(num_home), _num_office(num_office){
-			}
-			~contact() {}
-			void contact_add(tags_t, void*);
-			void dump_contact_details();
-
-			string _name;
-			string _email;
-			uint64_t _num_home;
-			uint64_t _num_office;	
+			virtual void contact_add(tags_t, void*) = 0;
+			virtual void dump_contact_details() = 0;
+            virtual string& getName() = 0;
+            virtual string& getEmail() = 0;
+            virtual uint64_t& getHomeNum() = 0;
+            virtual uint64_t& getOffNum() = 0;
 	};
 }
 

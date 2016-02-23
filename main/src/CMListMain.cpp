@@ -1,10 +1,11 @@
 #include <iostream>
 #include <Interface.h>
 #include <cmlist.h>
+#include <iterator>
 
 int
 main(int argc, char** argv) {
-	ContactList<contact> cv;
+	ContactList<ContactData> cv;
 
 	cv.addContact("anand", "anandnilkal@gmail.com", 9988776655, 1234567890);
 	cv.addContact("ilkal", "ilkal@gmail.com", 8888776655, 1234567891);

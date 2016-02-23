@@ -52,7 +52,7 @@ class ContactMap {
 		}
 
 		void addContact(string name, string email, uint64_t home, uint64_t office) {
-			cpointer c = new contact();
+			cpointer c = new T();
 			c->contact_add(contact::NAME, &name);
 			c->contact_add(contact::EMAIL, &email);
 			c->contact_add(contact::H_NUM, &home);
@@ -80,7 +80,7 @@ class ContactMap {
              */
 			for(cm_iter = std::begin(_cmultimap); cm_iter != std::end(_cmultimap); ++cm_iter) {
 				if(cm_iter != std::end(_cmultimap)) {
-					if(((cm_iter->second)->_num_home == cnum) || ((cm_iter->second)->_num_office == cnum)) {
+					if(((cm_iter->second)->getHomeNum() == cnum) || ((cm_iter->second)->getOffNum() == cnum)) {
 						_cmultimap.erase(cm_iter);
 					}
 				}
@@ -107,7 +107,7 @@ class ContactMap {
 			cout << "Displaying contact with contact number [" << num << "]" << endl;
 			for(cm_iter = std::begin(_cmultimap); cm_iter != std::end(_cmultimap); ++cm_iter) {
 				if(cm_iter != std::end(_cmultimap)) {
-					if(((cm_iter->second)->_num_home == cnum) || ((cm_iter->second)->_num_office == cnum)) {
+					if(((cm_iter->second)->getHomeNum() == cnum) || ((cm_iter->second)->getOffNum() == cnum)) {
 						displayContact(cm_iter->second);
 					}
 				}

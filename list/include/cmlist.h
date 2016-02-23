@@ -1,8 +1,9 @@
 #ifndef _CMLIST_H
 #define _CMLIST_H
-#include <Interface.h>
+#include <ContactData.h>
 #include <algorithm>
 #include <list>
+#include <iterator>
 
 using namespace ContactManager;
 
@@ -53,7 +54,7 @@ class ContactList {
 		}
 
 		void addContact(string name, string email, uint64_t home, uint64_t office) {
-			cpointer c = new contact();
+			cpointer c = new T();
 			/**
 			* overloaded constructor could be called.
 			*	used individual property update mechanism to show capability.
@@ -75,7 +76,7 @@ class ContactList {
 			*	all occurances of the entries matching the unary predicate will be erased.
 			*/
 			_clist.erase(std::remove_if(std::begin(_clist), std::end(_clist),
-				[&](cpointer c) { return (cname.compare(c->_name) == 0);}), 
+				[&](cpointer c) { return (cname.compare(c->getName()) == 0);}), 
 					std::end(_clist));
 			Size = _clist.size();
 		}
@@ -84,8 +85,8 @@ class ContactList {
 			cnum = num;
 			cout << "Removing contact with contact number [" << num << "]" << endl;
 			_clist.erase(std::remove_if(std::begin(_clist), std::end(_clist),
-				[&](cpointer c) { return ((cnum == (c->_num_home)) 
-					|| (cnum == (c->_num_office)));}), std::end(_clist));
+				[&](cpointer c) { return ((cnum == (c->getHomeNum())) 
+					|| (cnum == (c->getOffNum())));}), std::end(_clist));
 			Size = _clist.size();
 		}
 
@@ -99,7 +100,7 @@ class ContactList {
 			*/
 			while(cl_iter != std::end(_clist)) {
 				cl_iter = std::find_if(cl_iter, std::end(_clist),
-						[&](cpointer c) { return (cname.compare(c->_name) == 0);});
+						[&](cpointer c) { return (cname.compare(c->getName()) == 0);});
 				if(cl_iter != std::end(_clist)) {
 					displayContact(*cl_iter);
 					cl_iter++;
@@ -113,8 +114,8 @@ class ContactList {
 			cl_iter = std::begin(_clist);
 			while(cl_iter != std::end(_clist)) {
 				cl_iter = std::find_if(cl_iter, std::end(_clist),
-					[&](cpointer c) { return ((cnum == (c->_num_home)) 
-						|| (cnum == (c->_num_office)));});
+					[&](cpointer c) { return ((cnum == (c->getHomeNum())) 
+						|| (cnum == (c->getOffNum())));});
 				if(cl_iter != std::end(_clist)) {
 					displayContact(*cl_iter);
 					cl_iter++;

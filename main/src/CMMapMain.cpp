@@ -1,10 +1,10 @@
 #include <iostream>
-#include <Interface.h>
+#include <ContactData.h>
 #include <cmmulti.h>
 
 int
 main(int argc, char** argv) {
-	ContactMap<contact> cv;
+	ContactMap<ContactData> cv;
 
 	cv.addContact("anand", "anandnilkal@gmail.com", 9988776655, 1234567890);
 	cv.addContact("ilkal", "ilkal@gmail.com", 8888776655, 1234567891);
