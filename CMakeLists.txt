@@ -3,6 +3,7 @@ project(ContactManager)
 
 add_subdirectory("Interface")
 link_directories("${PROJECT_SOURCE_DIR}/lib")
+link_directories("${PROJECT_SOURCE_DIR}/Interface")
 include_directories("${PROJECT_SOURCE_DIR}/main/include")
 include_directories("${PROJECT_SOURCE_DIR}/list/include")
 include_directories("${PROJECT_SOURCE_DIR}/multimap/include")
