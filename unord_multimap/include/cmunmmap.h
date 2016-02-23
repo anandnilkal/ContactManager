@@ -11,29 +11,33 @@ using namespace ContactManager;
 template <typename T>
 class ContactUMap {
     private:
-		typedef T*          	 			    cpointer;
-		typedef T&               			    creference;
-		typedef contact::tags_t  			    dataType;	
-            struct _hash_function {
-                std::size_t operator()(const std::string s) const {
-                    return ((std::hash<std::string>()(s)) % 5);
-                }
-            };
+        struct _hash_function {
+            std::size_t operator()(const std::string s) const {
+                return ((std::hash<std::string>()(s)) % 5);
+            }
+        };
 
-            struct _eq_function {
-                bool operator()(const std::string& lhs, const std::string& rhs) const {
-                    return (lhs).compare(rhs) == 0;
-                }
-            };
-        typedef _hash_function                  myHash;
-        typedef _eq_function                    myEq;
-		typename std::unordered_multimap<string, cpointer, myHash, myEq>     _cumap;
-		typename std::unordered_multimap<string, cpointer, myHash, myEq>::iterator     cm_iter;
-        typename std::map<uint64_t, cpointer>              _numMap;
-        typename std::map<uint64_t, cpointer>::iterator    _numMapIt;
-		uint32_t              				    Size;
-		string                				    cname;
-		uint64_t              				    cnum;
+        struct _eq_function {
+            bool operator()(const std::string& lhs, const std::string& rhs) const {
+                return (lhs).compare(rhs) == 0;
+            }
+        };
+		typedef T*          	 			                                        cpointer;
+		typedef T&               			                                        creference;
+		typedef contact::tags_t  			                                        dataType;
+        typedef _hash_function                                                      myHash;
+        typedef _eq_function                                                        myEq;
+		typedef typename std::unordered_multimap<string, cpointer, myHash, myEq>    umap_t;
+		typedef typename std::unordered_multimap<string, cpointer, myHash, myEq>::iterator   umap_iter_t;
+        typedef typename std::map<uint64_t, cpointer>                               numap_t;
+        typedef typename std::map<uint64_t, cpointer>::iterator                     numap_iter_t;
+        umap_t                                                                      _cumap;
+        umap_iter_t                                                                 cm_iter;
+        numap_t                                                                     _numMap;
+        numap_iter_t                                                                _numMapIt;
+		uint32_t              				                                        Size;
+		string                				                                        cname;
+		uint64_t              				                                        cnum;
 
     public:
         ContactUMap() {
