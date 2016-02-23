@@ -29,8 +29,8 @@ class ContactUMap {
         typedef _eq_function                    myEq;
 		typename std::unordered_multimap<string, cpointer, myHash, myEq>     _cumap;
 		typename std::unordered_multimap<string, cpointer, myHash, myEq>::iterator     cm_iter;
-        std::map<uint64_t, string>              _numMap;
-        std::map<uint64_t, string>::iterator    _numMapIt;
+        typename std::map<uint64_t, cpointer>              _numMap;
+        typename std::map<uint64_t, cpointer>::iterator    _numMapIt;
 		uint32_t              				    Size;
 		string                				    cname;
 		uint64_t              				    cnum;
@@ -58,8 +58,8 @@ class ContactUMap {
 			c->contact_add(contact::H_NUM, &home);
 			c->contact_add(contact::O_NUM, &office);
 			_cumap.insert(::pair<string, cpointer>(name, c));
-            _numMap.insert(::pair<uint64_t, string>(home, name));
-            _numMap.insert(::pair<uint64_t, string>(office, name));
+            _numMap.insert(::pair<uint64_t, cpointer>(home, c));
+            _numMap.insert(::pair<uint64_t, cpointer>(office, c));
 			Size = _cumap.size();
 		}
 
