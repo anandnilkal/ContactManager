@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.4)
 project(ContactManager)
 
+set(CMAKE_CXX_FLAGS "-std=c++11")
+set(LIBRARY_OUTPUT_PATH "${PROJECT_SOURCE_DIR}/lib")
 add_subdirectory("Interface")
 link_directories("${PROJECT_SOURCE_DIR}/lib")
 include_directories("${PROJECT_SOURCE_DIR}/main/include")
